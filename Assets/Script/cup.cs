@@ -9,6 +9,10 @@ public class cup : MonoBehaviour {
     public float _speed;
 	public float jumpSpeed = 400f;
 
+    public AudioSource efxSource;
+    public AudioClip catchSfx;
+    public AudioClip junpSfx;
+
     public int playerNum;
 
     public bool isGrounded;
@@ -52,8 +56,9 @@ public class cup : MonoBehaviour {
 			//if (Input.GetKey (KeyCode.Space)) {  
             if (vertical > 0)
             {
-				Debug.Log("Jump!jumpSpeed="+jumpSpeed);
-				_rb.AddForce(_rb.transform.up * jumpSpeed);
+                //Debug.Log("Jump!jumpSpeed="+jumpSpeed);
+                PlaySingle(junpSfx);
+                _rb.AddForce(_rb.transform.up * jumpSpeed);
                 isGrounded = false;
             }  
 		}  
@@ -63,6 +68,8 @@ public class cup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        PlaySingle(catchSfx);
+
         switch (other.tag)
         {
             case "PPC":
@@ -85,7 +92,12 @@ public class cup : MonoBehaviour {
         }
     }
 
+    public void PlaySingle(AudioClip clip)
+    {
+        efxSource.clip = clip;
+        efxSource.Play();
 
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

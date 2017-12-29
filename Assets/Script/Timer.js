@@ -13,7 +13,7 @@ function Update(){
 
 function OnGUI(){
 	if(timer > 0){
-		GUI.Box(new Rect(715, 50, 190, 25), "Time Remaining : " + timer.ToString("0"));
+		GUI.Box(new Rect(1450, 100, 190, 25), "Time Remaining : " + timer.ToString("0"));
 	} else {
 		gameOver();
 	}

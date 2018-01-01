@@ -9,10 +9,6 @@ public class cup : MonoBehaviour {
     public float _speed;
 	public float jumpSpeed = 400f;
 
-    public AudioSource efxSource;
-    public AudioClip catchSfx;
-    public AudioClip junpSfx;
-
     public int playerNum;
 
     public bool isGrounded;
@@ -23,7 +19,6 @@ public class cup : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         score = 0;
-
     }
 	
 	// Update is called once per frame
@@ -42,7 +37,6 @@ public class cup : MonoBehaviour {
                 horizontal = Input.GetAxisRaw("Horizontal2");
                 vertical = Input.GetAxisRaw("Vertical2");
                 break;
-
         }
 
 
@@ -57,7 +51,7 @@ public class cup : MonoBehaviour {
             if (vertical > 0)
             {
                 //Debug.Log("Jump!jumpSpeed="+jumpSpeed);
-                PlaySingle(junpSfx);
+                FindObjectOfType<AudioManager>().Play("CupJump");
                 _rb.AddForce(_rb.transform.up * jumpSpeed);
                 isGrounded = false;
             }  
@@ -68,7 +62,7 @@ public class cup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        PlaySingle(catchSfx);
+        FindObjectOfType<AudioManager>().Play("CoinCollect");
 
         switch (other.tag)
         {
@@ -90,13 +84,6 @@ public class cup : MonoBehaviour {
 			}
 			break;
         }
-    }
-
-    public void PlaySingle(AudioClip clip)
-    {
-        efxSource.clip = clip;
-        efxSource.Play();
-
     }
 
     private void OnCollisionEnter(Collision collision)

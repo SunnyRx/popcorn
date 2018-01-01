@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager 
 {
-	int score;
+    int score;
 
 	public int Score {
 		get { return score; }

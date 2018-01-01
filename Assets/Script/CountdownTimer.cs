@@ -1,8 +1,11 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour {
-    float timeRemaing = 60;
+    public Text timerText;
+
+    float timeRemaining = 60;
 
 	// Use this for initialization
 	void Start () {
@@ -11,7 +14,7 @@ public class CountdownTimer : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        timeRemaing -= Time.deltaTime;
+        timeRemaining -= Time.deltaTime;
 	}
 
     private GUIStyle guiStyle = new GUIStyle(); //create a new variable
@@ -20,9 +23,9 @@ public class CountdownTimer : MonoBehaviour {
     {
         guiStyle.fontSize = 25; //change the font size
 
-        if (timeRemaing > 0)
+        if (timeRemaining > 0)
         {
-            GUI.Label(new Rect(1100, 100, 200, 200), "Time Remaining : " + (int)timeRemaing, guiStyle);
+            timerText.text = "Time Remaining: " + (int)timeRemaining;
         }
         else
         {

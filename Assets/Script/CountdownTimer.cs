@@ -1,11 +1,12 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour {
     public Text timerText;
 
     float timeRemaining = 60;
+
+    public GameObject levelTransitionUI;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +30,7 @@ public class CountdownTimer : MonoBehaviour {
         }
         else
         {
-            GUI.Label(new Rect(100, 100, 200, 100), "Time's up");
-            SceneManager.LoadScene("ResultScene");
+            levelTransitionUI.SetActive(true);
         }
 
     }

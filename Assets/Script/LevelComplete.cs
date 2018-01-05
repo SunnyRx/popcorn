@@ -7,5 +7,4 @@ public class LevelComplete : MonoBehaviour {
     {
         SceneManager.LoadScene("ResultScene");
     }
-
 }

@@ -18,12 +18,12 @@ public class Title : MonoBehaviour {
 
     public void SoloPlay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("SoloPlay");
     }
 
     public void MultiPlay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("MultiPlay");
     }
 
 

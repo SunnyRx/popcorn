@@ -35,6 +35,7 @@ public class ppcManager : MonoBehaviour {
 	void Start () {
 		{
 			Vector3 tmpPosition;
+            /*
 			tmpPosition = new Vector3 (-6, 40, -10);
 			ppcInstantiate(lv1ppcR, tmpPosition);
 			tmpPosition = new Vector3 (-4, 38, -10);
@@ -57,9 +58,26 @@ public class ppcManager : MonoBehaviour {
 			ppcInstantiate(lv1ppcR, tmpPosition);
 			tmpPosition = new Vector3(-6, 20, -10);
 			ppcInstantiate(lv1ppcR, tmpPosition);
+            */
 
-			//GetMore
-			tmpPosition = new Vector3(0, 20, -10);
+            ppcArrange testArrange = new ppcArrange();
+            foreach (List<Vector3> tempList in testArrange.arrange)
+            {
+                foreach (Vector3 tempV in tempList)
+                {
+                    if (tempV[0] == 1)
+                    {
+                        ppcInstantiate(lv1ppcR, new Vector3(tempV[1], tempV[2], -10));
+                    }
+                    else
+                    {
+                        ppcInstantiate(lv1ppcB, new Vector3(tempV[1], tempV[2], -10));
+                    }
+                }
+            }
+
+            //GetMore
+            tmpPosition = new Vector3(0, 20, -10);
 			ppcInstantiate(getMorePPC, tmpPosition);
 		}
 

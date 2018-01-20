@@ -58,6 +58,6 @@ public class GameSystem : MonoBehaviour {
     public void setScore(int tmpScore)
     {
         score += tmpScore;
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "スコア: " + score.ToString();
     }
 }

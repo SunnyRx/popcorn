@@ -65,7 +65,7 @@ public class cup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<AudioManager>().Play("CoinCollect");
+        
 
         switch (other.tag)
         {
@@ -75,7 +75,10 @@ public class cup : MonoBehaviour {
                 {
                     Debug.Log("Catch! ppcNum = " + popcorn.playerNum + " playerNum=" + playerNum);
                     if (popcorn.playerNum == playerNum)
-                    GameSystem.getInstance().setScore (popcorn.TakePopcorn());
+                    {
+                        FindObjectOfType<AudioManager>().Play("CoinCollect");
+                        GameSystem.getInstance().setScore(popcorn.TakePopcorn());
+                    }
                 }
                 Destroy(other.gameObject);
                 break;
@@ -83,9 +86,11 @@ public class cup : MonoBehaviour {
 			props tmpProp = other.GetComponent<props> ();
 			if (null != tmpProp) 
 			{
-				tmpProp.TakePopcorn();
+                    FindObjectOfType<AudioManager>().Play("CoinCollect");
+                    tmpProp.TakePopcorn();
 			}
-			break;
+            Destroy(other.gameObject);
+            break;
         }
     }
 

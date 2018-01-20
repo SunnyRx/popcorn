@@ -26,7 +26,7 @@ public class CountdownTimer : MonoBehaviour {
 
         if (timeRemaining > 0)
         {
-            timerText.text = "Time Remaining: " + (int)timeRemaining;
+            timerText.text = "残り時間: " + (int)timeRemaining;
         }
         else
         {

@@ -8,11 +8,12 @@ public class cup : MonoBehaviour {
     public Rigidbody _rb;
     public float _speed;
 	public float jumpSpeed = 400f;
+    public float sprintSpeed = 2.5f;
 
     public int playerNum;
 
     public bool isGrounded;
-
+    
 
     public int score;
 
@@ -58,6 +59,8 @@ public class cup : MonoBehaviour {
 		}  
 
 		_rb.MovePosition(movement + _rb.position);
+
+        DetectSprint();
     }
 
     void OnTriggerEnter(Collider other)
@@ -96,4 +99,16 @@ public class cup : MonoBehaviour {
         isGrounded = true;
     }
 
+    private void DetectSprint()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _speed = _speed * sprintSpeed;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _speed = _speed / sprintSpeed;
+        }
+    }
+    
 }

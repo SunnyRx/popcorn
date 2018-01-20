@@ -15,6 +15,7 @@ public class Teleportation : MonoBehaviour {
         {
             playerIsOverLapping = true;
             other.gameObject.transform.position = exitPortal.position;
+            FindObjectOfType<AudioManager>().Play("PortalEntry");
         }
     }
 }

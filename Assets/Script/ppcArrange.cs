@@ -2,13 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ppcArrange : MonoBehaviour {
+public class ppcArrange {
 
-    public int arrangeCount=10;
+    private int arrangeCount=10;
 
-	public List<List<Vector3>> arrange;
+	private List<List<Vector3>> arrange;
 
-	public ppcArrange()
+    private static ppcArrange instance = new ppcArrange();
+
+    public static ppcArrange Instance
+    {
+        get
+        {
+            return instance;
+
+        }
+    }
+
+    public List<List<Vector3>> Arrange
+    {
+        get
+        {
+            return arrange;
+
+        }
+    }
+
+    private ppcArrange()
 	{
 		arrange = new List<List<Vector3>>();
 
@@ -87,14 +107,4 @@ public class ppcArrange : MonoBehaviour {
         arrange.Add(tempList);
 
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

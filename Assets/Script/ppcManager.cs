@@ -34,34 +34,9 @@ public class ppcManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		{
-			Vector3 tmpPosition;
-            /*
-			tmpPosition = new Vector3 (-6, 40, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3 (-4, 38, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3 (-2, 36, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3 (0, 34, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(2, 32, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(4, 30, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(2, 28, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(0, 26, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(-2, 24, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(-4, 22, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-			tmpPosition = new Vector3(-6, 20, -10);
-			ppcInstantiate(lv1ppcR, tmpPosition);
-            */
 
-            ppcArrange testArrange = new ppcArrange();
-            foreach (List<Vector3> tempList in testArrange.arrange)
+            //Arrange Test
+            foreach (List<Vector3> tempList in ppcArrange.Instance.Arrange)
             {
                 foreach (Vector3 tempV in tempList)
                 {
@@ -76,7 +51,8 @@ public class ppcManager : MonoBehaviour {
                 }
             }
 
-            //GetMore
+            //GetMore Test
+            Vector3 tmpPosition;
             tmpPosition = new Vector3(0, 20, -10);
 			ppcInstantiate(getMorePPC, tmpPosition);
 		}
@@ -201,7 +177,8 @@ public class ppcManager : MonoBehaviour {
 		else
 			addForce = new Vector3(0, -500 * ppc.GetComponent<props>().force, 0);
         tppc.GetComponent<Rigidbody>().AddForce(addForce);
-        Destroy(tppc, 8);
+        //tppc.GetComponent<ppc>().model = tppc;
+        //Destroy(tppc, 8);
     }
 
     private void Falldown(GameObject ppc)

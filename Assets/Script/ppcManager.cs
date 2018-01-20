@@ -35,6 +35,7 @@ public class ppcManager : MonoBehaviour {
 	void Start () {
 		{
 
+            /*
             //Arrange Test
             foreach (List<Vector3> tempList in ppcArrange.Instance.Arrange)
             {
@@ -55,14 +56,39 @@ public class ppcManager : MonoBehaviour {
             Vector3 tmpPosition;
             tmpPosition = new Vector3(0, 20, -10);
 			ppcInstantiate(getMorePPC, tmpPosition);
+            */
+            
 		}
 
 		_instance = this;
 		Debug.Log("Start!");
 		setCurrentGameMode(gameMode.normal);
+        spawnPPCArrange();
         //SpawnPPC();
 
 
+    }
+
+    public void spawnPPCArrange()
+    {
+        int ramdonNum = Random.Range(0, ppcArrange.Instance.Arrange.Count);
+        Debug.Log("Count= "+ppcArrange.Instance.Arrange.Count);
+        List<Vector3> tempList = ppcArrange.Instance.Arrange[ramdonNum];
+        Debug.Log("tempList Count= " + tempList.Count);
+        foreach (Vector3 tempV in tempList)
+            {
+                Debug.Log(tempList);
+                
+                if (tempV[0] == 1)
+                {
+                    ppcInstantiate(lv1ppcR, new Vector3(tempV[1], tempV[2], -10));
+                }
+                else
+                {
+                    ppcInstantiate(lv1ppcB, new Vector3(tempV[1], tempV[2], -10));
+                }
+            }
+        Invoke("spawnPPCArrange", 7);
     }
 
 	public void setCurrentGameMode(gameMode gameMode)

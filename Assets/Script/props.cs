@@ -39,4 +39,14 @@ public class props : MonoBehaviour {
 		}
 
 	}
+	void OnTriggerEnter(Collider other)
+	{
+		switch (other.tag)
+		{
+		case "Floor":
+			Destroy(this.gameObject);
+			break;
+		}
+
+	}
 }

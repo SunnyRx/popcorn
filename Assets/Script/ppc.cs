@@ -31,7 +31,6 @@ public class ppc : MonoBehaviour {
         switch (other.tag)
         {
             case "Floor":
-                Debug.Log("Catch");
                 Destroy(this.gameObject);
                 break;
         }

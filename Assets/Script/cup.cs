@@ -8,7 +8,7 @@ public class cup : MonoBehaviour {
     public Rigidbody _rb;
     public float _speed;
 	public float jumpSpeed = 400f;
-    public float sprintSpeed = 2.5f;
+    public float sprintSpeed = 1.7f;
 
     public int playerNum;
 
@@ -97,7 +97,10 @@ public class cup : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
-    }
+		if (collision.gameObject.tag == "Coin") {
+			Destroy (collision.gameObject);
+		}
+   }
 
     private void DetectSprint()
     {
@@ -110,5 +113,5 @@ public class cup : MonoBehaviour {
             _speed = _speed / sprintSpeed;
         }
     }
-    
+ 
 }

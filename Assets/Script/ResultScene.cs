@@ -2,8 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultScene : MonoBehaviour {
+
+    public int convertedScore;
+    public Text FinalScore;
+    public Text HighScore;
+
+    private void Start()
+    {
+        convertedScore = GameObject.Find("GameSystem").GetComponent<GameSystem>().score;
+        FinalScore.text = convertedScore.ToString();
+        HighScore.text = convertedScore.ToString();
+    }
 
     public void PlayAgain()
     {
@@ -14,6 +26,5 @@ public class ResultScene : MonoBehaviour {
     {
         SceneManager.LoadScene("Title");
     }
-
-
+    
 }

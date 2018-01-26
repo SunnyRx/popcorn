@@ -12,6 +12,17 @@ public class GameSystem : MonoBehaviour {
 
     static GameSystem _instance;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        if (_instance)
+        {
+            Destroy(_instance.gameObject);
+        }
+        return;
+    }
+
+
     static public GameSystem getInstance()
     {
         if (!_instance)
@@ -19,12 +30,14 @@ public class GameSystem : MonoBehaviour {
             _instance = new GameSystem();
         }
         return _instance;
+
     }
 
     static public void destoryInstance()
     {
 
     }
+
 
     // Use this for initialization
     void Start () {

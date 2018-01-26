@@ -10,13 +10,13 @@ public class CountdownTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        GameObject.Find("GameSystem").GetComponent<GameSystem>().score = 0;
     }
 
     // Update is called once per frame
     void Update () {
         timeRemaining -= Time.deltaTime;
-	}
+    }
 
     private GUIStyle guiStyle = new GUIStyle(); //create a new variable
 

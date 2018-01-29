@@ -6,8 +6,10 @@ using UnityEngine;
 public class GameSystem : MonoBehaviour {
 
     private bool isPause;
-    public Text pauseText;
+
     public int score;
+
+    public Text pauseText;
     public Text scoreText;
 
     static GameSystem _instance;
@@ -46,7 +48,6 @@ public class GameSystem : MonoBehaviour {
         pauseText.text = "";
         score = 0;
         setScore(0);
-
     }
 	
 	// Update is called once per frame

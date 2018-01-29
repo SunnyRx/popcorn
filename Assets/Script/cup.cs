@@ -11,11 +11,9 @@ public class cup : MonoBehaviour {
     public float sprintSpeed = 1.7f;
 
     public int playerNum;
+    public int score;
 
     public bool isGrounded;
-    
-
-    public int score;
 
 	// Use this for initialization
 	void Start () {
@@ -40,12 +38,8 @@ public class cup : MonoBehaviour {
                 break;
         }
 
-
-
-
         Vector3 movement = new Vector3(horizontal, 0, 0f) * Time.deltaTime * _speed;
         
-
 		if (isGrounded) {  
 			//空格键控制跳跃  
 			//if (Input.GetKey (KeyCode.Space)) {  
@@ -57,7 +51,6 @@ public class cup : MonoBehaviour {
                 isGrounded = false;
             }  
 		}  
-
 		_rb.MovePosition(movement + _rb.position);
 
         DetectSprint();
@@ -65,8 +58,6 @@ public class cup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        
-
         switch (other.tag)
         {
             case "PPC":
@@ -94,14 +85,13 @@ public class cup : MonoBehaviour {
         }
     }
 
+    // Destroys Coin on contact with cup and starts function
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
-		if (collision.gameObject.tag == "Coin") {
-			Destroy (collision.gameObject);
-		}
    }
 
+    // Enables sprint when Left Shift is being held
     private void DetectSprint()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))

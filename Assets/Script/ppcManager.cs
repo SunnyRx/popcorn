@@ -12,6 +12,9 @@ public class ppcManager : MonoBehaviour {
     public GameObject lv3ppcB;
     public GameObject ppc;
 	public GameObject getMorePPC;
+    public GameObject FeverOverlay;
+    public GameObject FreezeOverlay;
+
     public Rigidbody ppcRigdbody;
     public Transform leftSpawn;
     public Transform rightSpawn;
@@ -98,14 +101,15 @@ public class ppcManager : MonoBehaviour {
 		{
 		case gameMode.normal:
 			Debug.Log("NormalMode Set");
-			mainCamera.backgroundColor = Color.gray;
+            FeverOverlay.SetActive(false);
+            FreezeOverlay.SetActive(false);
 			SpawnPPC();
 			break;
 		case gameMode.getMore:
 			Debug.Log("GetMoreMode Set");
-			mainCamera.backgroundColor = Color.yellow;
+            FeverOverlay.SetActive(true);
 			GetMoreMode();
-			Invoke("setGetMoreMode", 5.0f);
+			Invoke("setGetMoreMode", 10.0f);
 			break;
 		}
 	}
@@ -216,6 +220,11 @@ public class ppcManager : MonoBehaviour {
 	{
 		setCurrentGameMode(gameMode.normal);
 	}
+
+    public void CoinHeartSetMode()
+    {
+        setCurrentGameMode(gameMode.getMore);
+    }
 
 	private void GetMoreMode()
 	{

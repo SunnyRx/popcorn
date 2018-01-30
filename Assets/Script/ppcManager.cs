@@ -11,7 +11,6 @@ public class ppcManager : MonoBehaviour {
     public GameObject lv2ppcB;
     public GameObject lv3ppcB;
     public GameObject ppc;
-	public GameObject getMorePPC;
     public GameObject FeverOverlay;
     public GameObject FreezeOverlay;
 
@@ -162,11 +161,7 @@ public class ppcManager : MonoBehaviour {
         //生成爆米花
         float ramdonInt = Random.Range(0f, 1f);
         int ramdonNum = Random.Range(1, 3);
-        if (ramdonInt >= 0 && ramdonInt < 0.05f)
-        {
-            ppcInstantiate(getMorePPC, randomPosition);
-        }
-        else if (ramdonInt >= 0.05f && ramdonInt < 0.5f)
+        if (ramdonInt >= 0.05f && ramdonInt < 0.5f)
         {
             if (ramdonNum == 1)
             {

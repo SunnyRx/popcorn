@@ -27,7 +27,8 @@ public class ppcManager : MonoBehaviour {
 	{
 		normal,
 		getMore,
-		stop
+		stop,
+        freeze
 	}
 
 	public gameMode currentGameMode;
@@ -100,7 +101,9 @@ public class ppcManager : MonoBehaviour {
 		switch (currentGameMode)
 		{
 		case gameMode.normal:
-			Debug.Log("NormalMode Set");
+	        Debug.Log("NormalMode Set");
+            GameObject.Find("UI").GetComponent<CountdownTimer>().timerIsPaused = false;
+            Time.timeScale = 1f;
             FeverOverlay.SetActive(false);
             FreezeOverlay.SetActive(false);
 			SpawnPPC();
@@ -111,7 +114,15 @@ public class ppcManager : MonoBehaviour {
 			GetMoreMode();
 			Invoke("setGetMoreMode", 10.0f);
 			break;
-		}
+        case gameMode.freeze:
+            Debug.Log("FreezeMode Set");
+            Time.timeScale = 0.5f;
+            GameObject.Find("UI").GetComponent<CountdownTimer>().timerIsPaused = true;
+            FreezeOverlay.SetActive(true);
+            Invoke("setGetMoreMode", 5.0f);
+            break;
+        	}
+        
 	}
 	
 	// Update is called once per frame
@@ -226,7 +237,12 @@ public class ppcManager : MonoBehaviour {
         setCurrentGameMode(gameMode.getMore);
     }
 
-	private void GetMoreMode()
+    public void CoinClockSetMode()
+    {
+        setCurrentGameMode(gameMode.freeze);
+    }
+
+    private void GetMoreMode()
 	{
 		//设定随机生成范围
 		float x = Random.Range(leftSpawn.position.x, rightSpawn.position.x);

@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour {
     public Text timerText;
-
-    float timeRemaining = 60;
+    public bool timerIsPaused = false;
+    public float timeRemaining = 60;
 
     public GameObject levelTransitionUI;
 
@@ -15,7 +15,10 @@ public class CountdownTimer : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        timeRemaining -= Time.deltaTime;
+        if (!timerIsPaused)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
     }
 
     private GUIStyle guiStyle = new GUIStyle(); //create a new variable

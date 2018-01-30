@@ -16,18 +16,18 @@ public class CoinCollision : MonoBehaviour {
         // Evoke functions depending on which kind of coin hit the player 
        else if(other.gameObject.tag == "Player") 
         {
-            if(this.gameObject.name == "CoinFly") // When picking up the Fly
+            if(this.gameObject.name == "CoinFly(Clone)") // When picking up the fly
             {
                 GameObject.Find("GameSystem").GetComponent<GameSystem>().score = 0;
                 GameObject.Find("GameSystem").GetComponent<GameSystem>().setScore(0);
                 Destroy(this.gameObject);
             }
-            else if(this.gameObject.name == "CoinHeart") // When picking up the Heart
+            else if(this.gameObject.name == "CoinHeart(Clone)") // When picking up the heart
             {
                 GameObject.Find("Main Camera").GetComponent<ppcManager>().CoinHeartSetMode();
                 Destroy(this.gameObject);
             }
-            else if (this.gameObject.name == "CoinBomb") // When picking up the bomb
+            else if (this.gameObject.name == "CoinBomb(Clone)") // When picking up the bomb
             {
                 Debug.Log("Bomb hit player!");
                 GameObject[] existingPPCs = GameObject.FindGameObjectsWithTag("PPC");
@@ -35,6 +35,11 @@ public class CoinCollision : MonoBehaviour {
                 {
                     Destroy(existingPPC);
                 }
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.name == "CoinClock(Clone)") // When picking up the clock
+            {
+                GameObject.Find("Main Camera").GetComponent<ppcManager>().CoinClockSetMode();
                 Destroy(this.gameObject);
             }
             else

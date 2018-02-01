@@ -83,13 +83,13 @@ public class cup : MonoBehaviour {
             Destroy(other.gameObject);
             break;
         }
+
     }
 
-    // Destroys Coin on contact with cup and starts function
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
-   }
+    }
 
     // Enables sprint when Left Shift is being held
     private void DetectSprint()

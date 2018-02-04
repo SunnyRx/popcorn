@@ -33,6 +33,10 @@ public class ppc : MonoBehaviour {
             case "Floor":
                 Destroy(this.gameObject);
                 break;
+
+            case "Stage":
+                Destroy(this.gameObject);
+                break;
         }
     }
 }

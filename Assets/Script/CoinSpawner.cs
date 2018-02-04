@@ -27,23 +27,23 @@ public class CoinSpawner : MonoBehaviour {
 
     private void PickRandomCoin()
     {
-        Vector3 SpawnPoint = new Vector3(Random.Range(-13.0f, 13.0f), 29.0f, -9.8f);
+        Vector3 SpawnPoint = new Vector3(Random.Range(-12.0f, 12.0f), 29.0f, -9.8f);
         int roll = Random.Range(1, 101);
         if(roll < 26)
         {
-            Instantiate(CoinFly, SpawnPoint, Quaternion.identity);
+            Instantiate(CoinFly, SpawnPoint, Quaternion.Euler(180, 0, 0));
         }
         else if (roll > 25 && roll < 51)
         {
-            Instantiate(CoinHeart, SpawnPoint, Quaternion.identity);
+            Instantiate(CoinHeart, SpawnPoint, Quaternion.Euler(180, 0, 0));
         }
         else if (roll > 50 && roll < 76)
         {
-            Instantiate(CoinBomb, SpawnPoint, Quaternion.identity);
+            Instantiate(CoinBomb, SpawnPoint, Quaternion.Euler(180, 0, 0));
         }
         else if (roll > 75)
         {
-            Instantiate(CoinClock, SpawnPoint, Quaternion.identity);
+            Instantiate(CoinClock, SpawnPoint, Quaternion.Euler(180, 0, 0));
         }
         else
         {

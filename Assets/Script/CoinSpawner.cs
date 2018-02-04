@@ -29,7 +29,6 @@ public class CoinSpawner : MonoBehaviour {
     {
         Vector3 SpawnPoint = new Vector3(Random.Range(-13.0f, 13.0f), 29.0f, -9.8f);
         int roll = Random.Range(1, 101);
-        Debug.Log("Rolled coin value:" + roll);
         if(roll < 26)
         {
             Instantiate(CoinFly, SpawnPoint, Quaternion.identity);
@@ -52,78 +51,4 @@ public class CoinSpawner : MonoBehaviour {
         }
 
     }
-
-    /*private float searchCountdown = 1f;
-    private SpawnState state = SpawnState.COUNTING;
-
-    [System.Serializable]
-    public class Wave
-    {
-
-    }
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-    // Update is called once per frame
-    void Update() {
-        if(state == SpawnState.WAITING)
-        {
-            if (!CoinIsActive())
-            {
-                // Start new round
-                Debug.Log("Wave completed");
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        if (timeBetweenWaves <= 0)
-        {
-            if(state != SpawnState.SPAWNING)
-            {
-                StartCoroutine(SpawnWave());
-            }
-        }
-        else
-        {
-            timeBetweenWaves -= Time.deltaTime;
-        }
-	}
-
-    bool CoinIsActive()
-    {
-        searchCountdown -= Time.deltaTime;
-        if(searchCountdown <= 0f)
-        {
-            searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Coin") == null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    IEnumerator SpawnWave ()
-    {
-        Debug.Log("Spawning Wave");
-        state = SpawnState.SPAWNING;
-        SpawnCoin();
-
-        state = SpawnState.WAITING;
-
-        yield break;
-    }
-
-    void SpawnCoin ()
-    {
-        // Spawn coin
-        Instantiate(CoinSpawnPosition, transform.position, transform.rotation);
-        Debug.Log("Spawning Coin");
-    } */
 }

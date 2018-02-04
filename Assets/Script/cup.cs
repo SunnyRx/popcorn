@@ -94,11 +94,11 @@ public class cup : MonoBehaviour {
     // Enables sprint when Left Shift is being held
     private void DetectSprint()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             _speed = _speed * sprintSpeed;
         }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        else if(Input.GetKeyUp(KeyCode.RightShift))
         {
             _speed = _speed / sprintSpeed;
         }

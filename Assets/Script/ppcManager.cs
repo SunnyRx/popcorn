@@ -106,7 +106,27 @@ public class ppcManager : MonoBehaviour {
             FeverOverlay.SetActive(false);
             FreezeOverlay.SetActive(false);
 			SpawnPPC();
-			break;
+
+                float currentSpeedRed = GameObject.Find("RedCup").GetComponent<cup>()._speed;
+                if(currentSpeedRed == 40)
+                {
+                    GameObject.Find("RedCup").GetComponent<cup>()._speed /= 2;
+                }
+                else if(currentSpeedRed == 68)
+                {
+                    GameObject.Find("RedCup").GetComponent<cup>()._speed /= 2;
+                }
+   
+                float currentSpeedBlue = GameObject.Find("BlueCup").GetComponent<cup2>()._speed;
+                if (currentSpeedBlue == 40)
+                {
+                    GameObject.Find("BlueCup").GetComponent<cup2>()._speed /= 2;
+                }
+                else if (currentSpeedBlue == 68)
+                {
+                    GameObject.Find("BlueCup").GetComponent<cup2>()._speed /= 2;
+                }
+                break;
 		case gameMode.getMore:
 			Debug.Log("GetMoreMode Set");
             FeverOverlay.SetActive(true);
@@ -119,6 +139,8 @@ public class ppcManager : MonoBehaviour {
             GameObject.Find("UI").GetComponent<CountdownTimer>().timerIsPaused = true;
             FreezeOverlay.SetActive(true);
             Invoke("setGetMoreMode", 5.0f);
+            GameObject.Find("RedCup").GetComponent<cup>()._speed *= 2;
+            GameObject.Find("BlueCup").GetComponent<cup2>()._speed *= 2;
             break;
         	}
         

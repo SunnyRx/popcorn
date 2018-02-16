@@ -47,7 +47,7 @@ public class CoinCollision : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Random coin hit player");
+                Destroy(this.gameObject);
             }
         }
 

@@ -25,6 +25,8 @@ public class ResultScene : MonoBehaviour {
     public void MainMenu()
     {
         SceneManager.LoadScene("Title");
+        FindObjectOfType<AudioManager>().Stop("GameBGM");
+        FindObjectOfType<AudioManager>().Play("BGM");
     }
-    
+
 }

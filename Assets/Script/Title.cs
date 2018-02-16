@@ -19,11 +19,15 @@ public class Title : MonoBehaviour {
     public void SoloPlay()
     {
         SceneManager.LoadScene("SoloPlay");
+        FindObjectOfType<AudioManager>().Stop("BGM");
+        FindObjectOfType<AudioManager>().Play("GameBGM");
     }
 
     public void MultiPlay()
     {
         SceneManager.LoadScene("MultiPlay");
+        FindObjectOfType<AudioManager>().Stop("BGM");
+        FindObjectOfType<AudioManager>().Play("GameBGM");
     }
 
 

@@ -15,7 +15,12 @@ public class ResultScene : MonoBehaviour {
     {
         convertedScore = GameObject.Find("GameSystem").GetComponent<GameSystem>().score;
         FinalScore.text = convertedScore.ToString();
-        HighScore.text = convertedScore.ToString();
+        if(GameObject.Find("HighScore").GetComponent<HighScore>().highestScore < convertedScore)
+        {
+            GameObject.Find("HighScore").GetComponent<HighScore>().highestScore = convertedScore;
+        }
+        int highestScore = GameObject.Find("HighScore").GetComponent<HighScore>().highestScore;
+        HighScore.text = highestScore.ToString();
     }
 
     public void PlayAgain()
